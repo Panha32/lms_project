@@ -1,6 +1,7 @@
 const express = require('express');
 const routeBook = require('./routes/book');
 const routeAuthor = require('./routes/author');
+const routeCategory = require('./routes/category');
 
 const app = express();
 app.use(express.static('public'));
@@ -25,5 +26,6 @@ app.get('/login', (req, res) => {
 
 app.use(routeBook);
 app.use(routeAuthor);
+app.use(routeCategory);
 
 app.listen(3000);
