@@ -24,6 +24,22 @@ app.get('/login', (req, res) => {
     res.render('login');
 })
 
+app.get('/register', (req, res) => {
+    res.render('register');
+})
+
+app.get('/forgot-password', (req, res) => {
+    res.render('forgot-password');
+})
+
+app.get('/404', (req, res) => {
+    res.render('404');
+})
+
+app.get('/blank', (req, res) => {
+    res.render('blank');
+})
+
 app.use(routeBook);
 app.use(routeAuthor);
 app.use(routeCategory);
