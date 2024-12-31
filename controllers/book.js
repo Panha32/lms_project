@@ -57,6 +57,8 @@ const getEditBook = (req, res) => {
 }
 
 const postEditBook = (req, res) => {
+
+    return;
     const body = req.body;
     const sql = "UPDATE tbl_book SET name = ?, authorID = ?, categoryID = ? WHERE bookID = ?";
     const arrData = [body.name, 0, 0, body.bookID];
