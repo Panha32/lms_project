@@ -1,9 +1,11 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const routeBook = require('./routes/book');
 const routeAuthor = require('./routes/author');
 const routeCategory = require('./routes/category');
 
 const app = express();
+app.use(fileUpload());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));

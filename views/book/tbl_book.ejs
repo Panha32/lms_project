@@ -46,10 +46,11 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>ID</th>
+                      <th width="30px">ID</th>
                       <th>Book Name</th>
                       <th>Author</th>
                       <th>Category</th>
+                      <th width="101px">Book Avatar</th>
                       <th width="115px">Action</th>
                     </tr>
                   </thead>
@@ -60,6 +61,16 @@
                         <td><%= val.name %></td>
                         <td><%= val.authorID %></td>
                         <td><%= val.categoryID %></td>
+                        <td>
+                          <span>
+                            <!-- Display Avatar Button -->
+                            <button type="button" class="btn" data-avatar="/upload/<%= val.avatar %>"
+                              data-title="<%= val.name %>" data-toggle="modal" data-target="#myModal">
+                              <u>Show Avatar</u>
+                            </button>
+                          </span>
+                          <!-- <img src="/upload/<%#= val.avatar %>" width="40px" height="60px" alt="Book Cover"> -->
+                        </td>
                         <td>
                           <span >
                             <!-- Edit Button -->
@@ -72,6 +83,28 @@
                     <% }) %>
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avatar Modal -->
+          <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+              
+                <!-- Modal Header -->
+                <div class="modal-header border-0">
+                  <h4 class="modal-title text-primary font-weight-bold" id="modalTitle">Book Name</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="modal-body pb-5">
+                  <div class="d-flex justify-content-center">
+                    <img id="modalAvatar" src="" alt="Book Avatar" height="400px" width="300px" class="rounded-lg" />
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -106,6 +139,25 @@
 
   <!-- Page level custom scripts -->
   <script src="/js/demo/datatables-demo.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      $('#myModal').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget); // Button that triggered the modal
+        const avatarUrl = button.data('avatar'); // Extract avatar URL from data-avatar
+        const bookTitle = button.data('title'); // Extract book title from data-title
+  
+        // Update the modal's content with the avatar URL and title
+        const modalAvatar = document.getElementById('modalAvatar');
+        const modalTitle = document.getElementById('modalTitle');
+  
+        modalAvatar.src = avatarUrl;
+        modalTitle.textContent = bookTitle;
+      });
+    });
+  </script>
+  
+
 
 </body>
 

@@ -35,7 +35,7 @@
         <!-- /.container-fluid -->
         <div class="container mt-5">
           <h1 class="h3 mb-4 text-gray-800">Create Book</h1>
-          <form action="/createBook" method="post">
+          <form action="/createBook" method="post" enctype="multipart/form-data">
               <!-- Text Input -->
               <div class="form-group">
                   <label for="inputName">Book Name</label>
@@ -64,6 +64,13 @@
                       <option value="Funny">Funny</option>
                       <option value="Stategy">Stategy</option>
                   </select>
+              </div>
+
+              <!-- File Input -->
+              <div class="form-group">
+                <label for="" class="form-label">Book Avatar</label>
+                <br>
+                <input type="file" id="avatar" name="avatar">
               </div>
       
               <!-- Submit Button -->
