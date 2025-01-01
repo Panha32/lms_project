@@ -1,4 +1,5 @@
 const con = require('../config/db');
+const vCategory = require('../validation/category');
 
 const getCategory = (req, res) => {
     con.query("SELECT * FROM tbl_category", (err, data) => {
@@ -11,6 +12,12 @@ const getCreateCategory = (req, res) => {
 }
 
 const postCreateCategory = (req, res) => {
+    const {error, value} = vCategory(req.body);
+    if(error) {
+        res.send(error);
+        return;
+    }
+
     const body = req.body;
     const sql = "INSERT INTO `tbl_category`(`name`) VALUES (?)";
     const arrData = [body.name];

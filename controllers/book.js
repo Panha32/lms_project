@@ -1,4 +1,5 @@
 const con = require('../config/db');
+const vBook = require('../validation/book');
 const fs = require('fs');
 
 const getBook = (req, res) => {
@@ -13,6 +14,12 @@ const getCreateBook = (req, res) => {
 
 const postCreateBook = (req, res) => {
     let sampleFileName = 'default.png';
+
+    const {error, value} = vBook(req.body);
+    if(error) {
+        res.send(error);
+        return;
+    }
 
     if(req.files) {
         let sampleFile = req.files.avatar;

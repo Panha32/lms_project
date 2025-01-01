@@ -1,4 +1,5 @@
 const con = require('../config/db');
+const vAuthor = require('../validation/author');
 
 const getAuthor = (req, res) => {
     con.query("SELECT * FROM tbl_author", (err, data) => {
@@ -11,6 +12,12 @@ const getCreateAuthor = (req, res) => {
 }
 
 const postCreateAuthor = (req, res) => {
+    const {error, value} = vAuthor(req.body);
+    if(error) {
+        res.send(error);
+        return;
+    }
+
     const body = req.body;
     const sql = "INSERT INTO `tbl_author`(`name`) VALUES (?)";
     const arrData = [body.name];
