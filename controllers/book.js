@@ -41,7 +41,7 @@ const getDeleteBook = (req, res) => {
         }
         const avatarName =  data[0].avatar;
         if(avatarName != 'default.png') {
-            fs.unlinkSync('public/upload/' + avatarName);
+            fs.unlinkSync('./public/upload/' + avatarName);
         }
     })
 
@@ -57,11 +57,31 @@ const getEditBook = (req, res) => {
 }
 
 const postEditBook = (req, res) => {
+    // console.log(req.body);
+    // console.log(req.files);
+    let body = req.body;
+    let file;
 
-    return;
-    const body = req.body;
-    const sql = "UPDATE tbl_book SET name = ?, authorID = ?, categoryID = ? WHERE bookID = ?";
-    const arrData = [body.name, 0, 0, body.bookID];
+    if(!req.files) {
+        file = body.old_avatar;
+    } else {
+        let sampleFile = req.files.avatar;
+        let sampleFileName = Date.now() + sampleFile.name;
+        let uploadPath = './public/upload/' + sampleFileName;
+
+        sampleFile.mv(uploadPath, err => {
+            if(err) {
+                console.log(err);
+            }
+            if(body.old_avatar != 'default.png') {
+                fs.unlinkSync('./public/upload/' + body.old_avatar);
+            }
+        })
+        file = sampleFileName;
+    }
+
+    const sql = "UPDATE tbl_book SET name = ?, authorID = ?, categoryID = ?, avatar = ? WHERE bookID = ?";
+    const arrData = [body.name, 0, 0, file, body.bookID];
     con.query(sql, arrData, (err, data) => {
         err ? console.log(err) : res.redirect('/book');
     })
