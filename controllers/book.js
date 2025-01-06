@@ -64,8 +64,6 @@ const getEditBook = (req, res) => {
 }
 
 const postEditBook = (req, res) => {
-    // console.log(req.body);
-    // console.log(req.files);
     let body = req.body;
     let file;
 

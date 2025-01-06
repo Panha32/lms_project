@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload');
 const routeBook = require('./routes/book');
 const routeAuthor = require('./routes/author');
 const routeCategory = require('./routes/category');
+const routeAuth = require('./routes/auth');
 
 const app = express();
 app.use(fileUpload());
@@ -22,18 +23,6 @@ app.get('/tables', (req, res) => {
     res.render('tables');
 })
 
-app.get('/login', (req, res) => {
-    res.render('login');
-})
-
-app.get('/register', (req, res) => {
-    res.render('register');
-})
-
-app.get('/forgot-password', (req, res) => {
-    res.render('forgot-password');
-})
-
 app.get('/404', (req, res) => {
     res.render('404');
 })
@@ -41,6 +30,8 @@ app.get('/404', (req, res) => {
 app.get('/blank', (req, res) => {
     res.render('blank');
 })
+
+app.use(routeAuth);
 
 app.use(routeBook);
 app.use(routeAuthor);

@@ -1,21 +1,21 @@
 const express = require('express');
 const {getCreateAuthor, getAuthor, postCreateAuthor, getDeleteAuthor, getEditAuthor, postEditAuthor} = require('../controllers/author');
 
-const route = express.Router();
+const router = express.Router();
 
 // get author page
-route.get('/author', getAuthor);
+router.get('/author', getAuthor);
 
 // create author
-route.get('/createAuthor', getCreateAuthor);
-route.post('/createAuthor', postCreateAuthor);
+router.get('/createAuthor', getCreateAuthor);
+router.post('/createAuthor', postCreateAuthor);
 
 // delete author
-route.get('/deleteAuthor/:authorID', getDeleteAuthor);
+router.get('/deleteAuthor/:authorID', getDeleteAuthor);
 
 // edit author
-route.get('/editAuthor/:authorID', getEditAuthor);
-route.post('/editAuthor', postEditAuthor);
+router.get('/editAuthor/:authorID', getEditAuthor);
+router.post('/editAuthor', postEditAuthor);
 
-module.exports = route;
+module.exports = router;
 
