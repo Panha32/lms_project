@@ -9,7 +9,7 @@ const requireAuth = (req, res, next) => {
                 res.locals.user = null;
                 res.redirect('/login');
             } else {
-                console.log(decodedToken);
+                // console.log(decodedToken);
                 next();
             }
         });
