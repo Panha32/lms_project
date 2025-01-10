@@ -1,0 +1,10 @@
+{
+    "create_an_acc": "Create an Account!",
+    "first_name_placeholder": "First Name",
+    "last_name_placeholder": "Last Name",
+    "email_address_placeholder": "Email Address",
+    "password_placeholder": "Password",
+    "repeat_password_placeholder": "Repeat Password",
+    "register": "Register Account",
+    "alreay_have_acc": "Already have an account? Login!"
+}

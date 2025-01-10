@@ -7,7 +7,9 @@ const generateToken = (id) => {
 }
 
 const loginGet = (req, res) => {
-    res.render('auth/login');
+    res.render('auth/login', {
+        req: req
+    });
 }
 
 const loginPost = (req, res) => {

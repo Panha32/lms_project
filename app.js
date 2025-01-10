@@ -9,6 +9,7 @@ const routeAuthor = require('./routes/author');
 const routeCategory = require('./routes/category');
 const routeAuth = require('./routes/auth');
 const { requireAuth, checkUser } = require('./middlewares/auth');
+const i18nextMiddleware = require('./middlewares/i18next');
 
 // App Configuration
 const app = express();
@@ -20,12 +21,15 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 
+// i18next middleware
+app.use(i18nextMiddleware);
+
 // Global Middleware
 app.get('*', checkUser);
 
 // Main Routes
 app.get(['/', '/index'], requireAuth, (req, res) => {
-    res.render('index');
+    res.render('index', {req: req});
 })
 
 app.get('/tables', requireAuth, (req, res) => {

@@ -40,6 +40,15 @@
         </div>
       </li>
 
+      <!-- Change Language -->
+       <li class="nav-item dropdown no-arrow mx-1">
+        <label for="language">Language</label>
+        <select id="language" name="lng">
+          <option value="en" <%= req.language === 'en' ? 'selected' : '' %>>English</option>
+          <option value="kh" <%= req.language === 'kh' ? 'selected' : '' %>>Khmer</option>
+        </select>
+       </li>
+
       <!-- Nav Item - Alerts -->
       <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
