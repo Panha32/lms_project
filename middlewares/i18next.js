@@ -6,10 +6,12 @@ i18next
 .use(i18nextFsBackend)
 .use(i18nextMiddleware.LanguageDetector)
 .init({
-    backend: { loadPath: './locales/{{lng}}/{{ns}}.json',},
+    backend: { loadPath: './locales/{{lng}}/{{ns}}/{{ns}}.json',},
     fallbackLng: 'en',
     preload: ['en', 'kh'],
-    ns: ['login', 'register', 'common', 'index'],
+    // ns: ['login', 'register', 'common', 'index'],
+    ns: ['index', 'login', 'common', 'tbl_book', 'create_book'],
+    defaultNS: 'common',
     detection: {
         order: ['querystring', 'cookie'],
         caches: ['cookie']
